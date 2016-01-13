@@ -16,8 +16,8 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
 } else if (isset($_GET["id"])) {
     // Output, can be routed in Webserver Config
     include 'sqlinit.php';
-    $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entrys WHERE id=".mysqli_real_escape_string($sqlconnection, $_GET["id"]).";"))[0];
-    echo $text;
+    $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entrys WHERE id=".mysqli_real_escape_string($sqlconnection, $_GET["id"]).";"));
+    echo var_dump($text);
     die();
 } else {
     // Input From
