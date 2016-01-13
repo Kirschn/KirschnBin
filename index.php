@@ -10,9 +10,10 @@
 if (isset($_POST["submit"]) && isset($_POST["text"])) {
     // Create mechanic, than redirect to id parameter
     include 'sqlinit.php';
-    mysqli_query($sqlconnection, "INSERT INTO entrys (text) VALUES (".mysqli_real_escape_string($sqlconnection, $_POST["text"]).");");
+    echo "SQL: INSERT INTO `kirschnbin`.`entrys` (`id`, `text`) VALUES (NULL, ".mysqli_real_escape_string($sqlconnection, $_POST["text"]).");";
+    mysqli_query($sqlconnection, "INSERT INTO `kirschnbin`.`entrys` (`id`, `text`) VALUES (NULL, ".mysqli_real_escape_string($sqlconnection, $_POST["text"]).");");
     $id=mysqli_insert_id($sqlconnection);
-    header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?id=$id");
+    //header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?id=$id");
 } else if (isset($_GET["id"])) {
     // Output, can be routed in Webserver Config
     include 'sqlinit.php';
