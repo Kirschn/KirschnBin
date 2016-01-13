@@ -7,7 +7,7 @@
  */
 // SETUP: Create sqlinit.php
 // This file contains a single line to initialize the MySQL Connection
-if (isset($_GET["POST"]) && isset($_POST["text"])) {
+if (isset($_POST["submit"]) && isset($_POST["text"])) {
     // Create mechanic, than redirect to id parameter
     include 'sqlinit.php';
     mysqli_query($sqlconnection, "INSERT INTO entrys (text) VALUES (".mysqli_real_escape_string($sqlconnection, $_POST["text"]).");");
@@ -41,7 +41,7 @@ if (isset($_GET["POST"]) && isset($_POST["text"])) {
     <body>
         <form action="<?php echo "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}"; ?>" method="POST">
             <textarea name="text" placeholder="Text here..." id="textbox"></textarea>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" name="submit">
         </form>
     </body>
     </html>
