@@ -34,8 +34,8 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
                 margin: 0;
             }
             #textbox {
-                width: 100vw;
-                height: 100vh;
+                width: 99vw;
+                height: 95vh;
             }
         </style>
     </head>
