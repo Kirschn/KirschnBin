@@ -16,9 +16,10 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?id=$id");
 } else if (isset($_GET["id"])) {
     // Output, can be routed in Webserver Config
+    header("")
     include 'sqlinit.php';
     $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entrys WHERE id=\"".mysqli_real_escape_string($sqlconnection, $_GET["id"])."\";"))[0];
-    echo $text;
+    echo str_replace("\n", "\r\n");
     die();
 } else {
     // Input From
