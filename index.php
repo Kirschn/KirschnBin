@@ -19,7 +19,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     header("")
     include 'sqlinit.php';
     $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entrys WHERE id=\"".mysqli_real_escape_string($sqlconnection, $_GET["id"])."\";"))[0];
-    echo str_replace("\n", "\r\n");
+    echo str_replace("\n", "\r\n", $text);
     die();
 } else {
     // Input From
