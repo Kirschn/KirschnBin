@@ -3,13 +3,13 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     include "config.php";
     $sqlconnection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbtable);
     echo "SQL: INSERT INTO `kirschnbin`.`entrys` (`id`, `text`) VALUES (NULL, ".mysqli_real_escape_string($sqlconnection, $_POST["text"]).");";
-    mysqli_query($sqlconnection, "INSERT INTO `kirschnbin`.`entrys` (`id`, `text`) VALUES (NULL, \"".mysqli_real_escape_string($sqlconnection, $_POST["text"])."\");");
+    mysqli_query($sqlconnection, "INSERT INTO `kirschnbin`.`entries` (`id`, `text`) VALUES (NULL, \"".mysqli_real_escape_string($sqlconnection, $_POST["text"])."\");");
     $id=mysqli_insert_id($sqlconnection);
     header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?id=$id");
     mysqli_close($sqlconnection);
 } else if (isset($_GET["id"])) {
     include 'config.php';
-    $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entrys WHERE id=\"".mysqli_real_escape_string($sqlconnection, $_GET["id"])."\";"))[0];
+    $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entries WHERE id=\"".mysqli_real_escape_string($sqlconnection, $_GET["id"])."\";"))[0];
     echo str_replace("\r", "<br>", $text);
     mysqli_close($sqlconnection);
 } else {
@@ -18,7 +18,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     <html>
     <head>
         <title>
-            KirschnBin Create
+            KirschnBin Create Form
         </title>
         <style>
             body {
