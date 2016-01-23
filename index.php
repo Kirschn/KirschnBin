@@ -14,7 +14,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     if ($sqlresult !== false) {
     $text = mysqli_fetch_array($sqlresult)[0];
     header("Content-Type: text/plain");
-    echo str_replace("\r", "<br>", $text);
+    echo $text;
     mysqli_close($sqlconnection);
     } else {
         echo "paste does not exist";
