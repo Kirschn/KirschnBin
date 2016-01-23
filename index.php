@@ -18,6 +18,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     $sqlconnection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbtable);
     $loadid = str_replace("/", "", $_GET["id"]);
     $sqlresult = mysqli_query($sqlconnection, "SELECT text FROM entries WHERE id=\"".mysqli_real_escape_string($sqlconnection, $loadid)."\" OR uniqid=\"".mysqli_real_escape_string($sqlconnection, $loadid)."\";");
+    mysqli_query($sqlconnection, "UPDATE entries SET hits = hits + 1 WHERE id=\"".mysqli_real_escape_string($sqlconnection, $loadid)."\" OR uniqid=\"".mysqli_real_escape_string($sqlconnection, $loadid)."\";");
     if ($sqlresult !== false) {
     $text = mysqli_fetch_array($sqlresult)[0];
     header("Content-Type: text/plain");
