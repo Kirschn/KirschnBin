@@ -18,7 +18,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     echo str_replace("\r", "<br>", $text);
     mysqli_close($sqlconnection);
     } else {
-        header("Location: https://pasteload.tk");
+        echo "paste does not exist";
     }
 } else {
     ?>
