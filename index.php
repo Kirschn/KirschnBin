@@ -11,6 +11,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     include 'config.php';
     $sqlconnection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbtable);
     $sqlresult = mysqli_query($sqlconnection, "SELECT text FROM entries WHERE id=\"".mysqli_real_escape_string($sqlconnection, $_GET["id"])."\";");
+    echo mysqli_error($sqlconnection);
     if ($sqlresult !== false) {
     $text = mysqli_fetch_array($sqlresult)[0];
     header("Content-Type: text/plain");
