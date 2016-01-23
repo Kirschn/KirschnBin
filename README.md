@@ -1,5 +1,5 @@
 # KirschnBin
-40-line Pastebin clone
+50-line Pastebin clone
 
 ## Setup
  1. Create MySQL table "entries" with column "id" as A_I Integer and "text" as text
