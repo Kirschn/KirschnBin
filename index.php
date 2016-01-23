@@ -9,7 +9,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     echo "SQL: INSERT INTO `kirschnbin`.`entries` (`id`, `text`) VALUES (NULL, \"".mysqli_real_escape_string($sqlconnection, $_POST["text"])."\", \"" . $randomString . "\");";
-    mysqli_query($sqlconnection, "INSERT INTO `kirschnbin`.`entries` (`id`, `text`) VALUES (NULL, \"".mysqli_real_escape_string($sqlconnection, $_POST["text"])."\", \"" . $randomString . "\");");
+    mysqli_query($sqlconnection, "INSERT INTO `kirschnbin`.`entries` (`id`, `text`, `uniqid`) VALUES (NULL, \"".mysqli_real_escape_string($sqlconnection, $_POST["text"])."\", \"" . $randomString . "\");");
     $id=mysqli_insert_id($sqlconnection);
     //header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}$randomString");
     mysqli_close($sqlconnection);
