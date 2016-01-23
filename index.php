@@ -41,7 +41,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     <body>
         <form action="<?php echo "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}"; ?>" method="POST">
             <textarea name="text" placeholder="Text here..." id="textbox"></textarea>
-            <input type="submit" value="Submit" name="submit">
+            <input type="submit" value="Submit" name="submit" width="100%">
         </form>
     </body>
     </html>
