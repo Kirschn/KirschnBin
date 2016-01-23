@@ -8,8 +8,10 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?id=$id");
     mysqli_close($sqlconnection);
 } else if (isset($_GET["id"])) {
+    $sqlconnection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbtable);
     include 'config.php';
     $text = mysqli_fetch_array(mysqli_query($sqlconnection, "SELECT text FROM entries WHERE id=\"".mysqli_real_escape_string($sqlconnection, $_GET["id"])."\";"))[0];
+    header("Content-Type: text/plain");
     echo str_replace("\r", "<br>", $text);
     mysqli_close($sqlconnection);
 } else {
