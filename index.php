@@ -5,7 +5,7 @@ if (isset($_POST["submit"]) && isset($_POST["text"])) {
     echo "SQL: INSERT INTO `kirschnbin`.`entrys` (`id`, `text`) VALUES (NULL, ".mysqli_real_escape_string($sqlconnection, $_POST["text"]).");";
     mysqli_query($sqlconnection, "INSERT INTO `kirschnbin`.`entries` (`id`, `text`) VALUES (NULL, \"".mysqli_real_escape_string($sqlconnection, $_POST["text"])."\");");
     $id=mysqli_insert_id($sqlconnection);
-    header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?id=$id");
+    header("Location: http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}$id");
     mysqli_close($sqlconnection);
 } else if (isset($_GET["id"])) {
     include 'config.php';
